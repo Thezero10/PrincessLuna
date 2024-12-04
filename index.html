@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Floating Message</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      position: relative;
+    }
+
+    .message {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      font-size: 24px;
+      text-align: center;
+      z-index: 1;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .message2 {
+      position: absolute;
+      margin-top: 150px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      font-size: 24px;
+      text-align: center;
+      z-index: 1;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(20%, 20%);
+      }
+
+      50% {
+        transform: translate(-20%, -20%);
+      }
+
+      75% {
+        transform: translate(10%, -10%);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="spiral-background"></div>
+  <div class="message">Te Quiero Un Montón</div>
+
+  <audio id="myAudio" style="display: none;" loop>
+    <source src="princesa.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="playButton" class="message2">PLAY</button>
+
+  <script>
+    const audio = document.getElementById("myAudio");
+    const playButton = document.getElementById("playButton");
+
+    playButton.onclick = function () {
+      audio.play().catch(function (error) {
+        console.log("Error al reproducir:", error);
+      });
+      playButton.style.display = "none"; // Oculta el botón después de hacer clic
+    };
+  </script>
+
+  <css-doodle>
+    <style>
+      --color: #51eaea,
+      #fffde1,
+      #ff9d76,
+      #FB3569;
+
+      @grid: 30x1 / 100vw 100vh / #270f34;
+
+      :container {
+        perspective: 30vmin;
+        --deg: @p(-180deg, 180deg);
+      }
+
+      :after,
+      :before {
+        content: '';
+        background: @p(--color);
+        @place: @r(100%) @r(100%);
+        @size: @r(6px);
+        @shape: heart;
+      }
+
+      @place: center;
+      @size: 18vmin;
+
+      box-shadow: @m2(0 0 50px @p(--color));
+      background: @m100(radial-gradient(@p(--color) 50%, transparent 0) @r(-20%, 120%) @r(-20%, 100%) / 1px 1px no-repeat);
+
+      will-change: transform,
+      opacity;
+      animation: scale-up 12s linear infinite;
+      animation-delay: calc(-12s / @I * @i);
+
+      @keyframes scale-up {
+
+        0%,
+        95.01%,
+        100% {
+          transform: translateZ(0) rotate(0);
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 1;
+        }
+
+        95% {
+          transform:
+            translateZ(35vmin) rotateZ(var(--deg));
+        }
+      }
+    </style>
+  </css-doodle>
+
+  <script src='script.js'></script>
+</body>
+
+</html>
